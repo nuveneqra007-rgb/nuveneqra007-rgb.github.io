@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Noticias Perrunas</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(to right, #fdfbfb, #ebedee);
+            margin: 0;
+            padding: 0;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        header {
+            background-color: #ff914d;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .contenedor {
+            max-width: 900px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: background 0.5s;
+        }
+
+        h2, h3 {
+            color: #2c3e50;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .fecha {
+            text-align: center;
+            color: gray;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 500px;
+            display: block;
+            margin: 25px auto;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        .destacado {
+            background-color: #fff3e6;
+            padding: 15px;
+            border-left: 5px solid #ff914d;
+            margin: 25px 0;
+            font-style: italic;
+        }
+
+        .boton {
+            display: inline-block;
+            margin: 10px auto;
+            padding: 12px 25px;
+            background-color: #ff914d;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        .boton:hover {
+            background-color: #ff7b26;
+        }
+
+        .acciones {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 40px;
+        }
+
+        /* 🌙 MODO OSCURO */
+        .oscuro {
+            background: #1e1e1e;
+            color: white;
+        }
+
+        .oscuro .contenedor {
+            background: #2c2c2c;
+        }
+
+        .oscuro p, 
+        .oscuro h2, 
+        .oscuro h3 {
+            color: #f1f1f1;
+        }
+
+        .oscuro footer {
+            background: #111;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🐾 Noticias Perrunas🐾</h1>
+    <p>Historias que derriten corazones</p>
+</header>
+
+<div class="contenedor">
+
+    <h2>🐾Perrito se vuelve viral en internet🐾</h2>
+    <p class="fecha" id="fecha"></p>
+
+    <p>
+        Un pequeño perrito ha conquistado las redes sociales gracias a su ternura,
+        su energía contagiosa y su increíble historia de superación.
+    </p>
+
+    <img src="https://media.istockphoto.com/id/1048897352/es/foto/diversi%C3%B3n-de-perro-beagle-en-jard%C3%ADn-al-aire-libre-correr-y-saltar-con-la-bola-a-la-c%C3%A1mara-de.jpg?s=612x612&w=0&k=20&c=REu3WnendoVm8FtKQm8P9-ERRuqMabIqAw1GOoguNT0=" 
+         alt="Perrito feliz">
+
+    <div class="destacado">
+        “Este perrito demuestra que una segunda oportunidad puede cambiarlo todo.”
+    </div>
+
+    <h3>¿Por qué es tan especial?</h3>
+
+    <p>
+        El perrito fue rescatado de las calles y ahora vive una vida llena de amor,
+        juegos, cuidados y personas que lo protegen.
+    </p>
+
+    <img src="https://thumbs.dreamstime.com/b/el-jugar-del-perrito-10458111.jpg" 
+         alt="Perrito jugando">
+
+    <h3>Un final feliz ❤️</h3>
+
+    <p>
+        Hoy tiene un hogar seguro y miles de seguidores que celebran cada paso de su
+        nueva vida. Su historia inspira a adoptar y amar sin condiciones.
+    </p>
+
+    <div class="acciones">
+        <button class="boton" onclick="like()">❤️ Me gusta (<span id="likes">0</span>)</button>
+        <button class="boton" onclick="leerMas()">🐶 Leer más</button>
+        <button class="boton" onclick="modoOscuro()">🌙 Modo oscuro</button>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Noticias Perrunas | Amor en cuatro patas 🐾
+</footer>
+
+<!-- 🌟 JAVASCRIPT -->
+<script>
+    /* FECHA AUTOMÁTICA */
+    const fechaActual = new Date().toLocaleDateString('es-ES', {
+        day: 'numeric', month: 'long', year: 'numeric'
+    });
+    document.getElementById("fecha").textContent = "Publicado el " + fechaActual;
+
+    /* CONTADOR DE LIKES */
+    let contador = 0;
+    function like() {
+        contador++;
+        document.getElementById("likes").textContent = contador;
+    }
+
+    /* MENSAJE LEER MÁS */
+    function leerMas() {
+        alert("🐾 Gracias por apoyar historias perrunas. ¡Pronto habrá más!");
+    }
+
+    /* MODO OSCURO */
+    function modoOscuro() {
+        document.body.classList.toggle("oscuro");
+    }
+
+    /* EFECTO IMÁGENES */
+    const imagenes = document.querySelectorAll("img");
+    imagenes.forEach(img => {
+        img.addEventListener("mouseover", () => {
+            img.style.transform = "scale(1.05)";
+        });
+        img.addEventListener("mouseout", () => {
+            img.style.transform = "scale(1)";
+        });
+    });
+</script>
+
+nuveneqra007-rgb.github.io
+│
+└── index.html
+
+</body>
+</html>
